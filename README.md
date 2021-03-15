@@ -99,3 +99,43 @@ sudo apt install update && sudo apt upgrade -y
 ```
 
 
+# Installing The Minecraft Server (Forged)
+This section covers how to install and run the Forged server. 
+
+## Environment Setup 
+SSH into your Pi and follow the instructions below. 
+### Install Java 
+You will need to install Java before doing anything else. 
+
+If you need JDK 8 for your preffered version of Minecraft, use this command:
+```
+sudo apt install openjdk-8-jdk
+```
+
+If your preffered version of Minecraft is newer and requires Java 11, use this command:
+```
+sudo apt install default-jre
+```
+
+You may verify Java install properly by checking the version installed:
+``` 
+java -version
+```
+
+### Get Ubuntu Ready
+Just in case anything new has happend. 
+```
+sudo apt update && sudo apt upgrade -y
+```
+
+#### Install Screen
+```
+sudo apt install screen
+```
+
+
+
+
+[Reference](https://www.linuxnorth.org/minecraft/modded_linux.html)
+
+[Reference 2](https://www.arubacloud.com/tutorial/how-to-install-mods-on-a-minecraft-server-with-ubuntu-20-04.aspx)
