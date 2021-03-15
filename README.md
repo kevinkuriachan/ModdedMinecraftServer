@@ -2,6 +2,8 @@
 
 This is just a document describing how to run a modded minecraft server on a Raspberry Pi. These instructions were tested on a Raspberry Pi 4. 
 
+With a Raspberry Pi running your modded Minecraft server, you can have it run all the time (or whenever you want) for yourself or friends to connect to and play. No need to pay for a subscription on a hosting playform, just the upfront cost of the hardware. 
+
 ## What you will need
 - Raspberry Pi with at least 4 GB of RAM (I used 8)
 - Power cable for Raspberry Pi 
