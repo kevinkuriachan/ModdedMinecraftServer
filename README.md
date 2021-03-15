@@ -3,10 +3,15 @@
 This is just a document describing how to run a modded minecraft server on a Raspberry Pi. These instructions were tested on a Raspberry Pi 4. 
 
 ## What you will need
-- Raspberry Pi with at least 4 GB of RAM
+- Raspberry Pi with at least 4 GB of RAM (I used 8)
 - Power cable for Raspberry Pi 
 - A 32 GB microSD card
 - Ethernet cable 
+
+## What this document covers
+- Setting up an Ubuntu Server on a Raspberry Pi
+- Installing and running the Forged Server for Minecraft
+- Installing Mods 
 
 # Setting Up the Raspberry Pi
 
@@ -81,7 +86,7 @@ Click Open, and when asked for the login name, type Ubuntu.
 
 ### Initial Setup 
 
-When you SSH into the Pi, if you are asked to change the default password, go ahead and change it. Remember this password for when you need to SSH into the Pi later. 
+When you SSH into the Pi for the first time, if you are asked to change the default password, go ahead and change it. Remember this password for when you need to SSH into the Pi later. 
 
 \* Note -- you will not see anything when you type a password into the terminal.
 
