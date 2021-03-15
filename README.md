@@ -1,6 +1,6 @@
-# Modded Minecraft Server Instructions
+# Running a Modded Minecraft Server on a Raspberry Pi
 
-This is just a document describing how to run a modded minecraft server on a Raspberry Pi. 
+This is just a document describing how to run a modded minecraft server on a Raspberry Pi. These instructions were tested on a Raspberry Pi 4. 
 
 ## What you will need
 - Raspberry Pi with at least 4 GB of RAM
