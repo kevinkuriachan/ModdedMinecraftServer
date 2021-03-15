@@ -21,5 +21,74 @@ This is just a document describing how to run a modded minecraft server on a Ras
 [Reference](https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#1-overview)
 
 ## Making The Server Headless 
+In this part, we will set up the Ubuntu server "headless", meaning it will not need its own peripherals (keyboard, mouse, monitor). Rather, we will ssh (remote) into it from another computer on the network.
+
+1. With the microSD card inserted into your computer, open the **boot** directory on the card.
+2. Create a new file called "ssh". 
 
 [Reference](https://linuxhint.com/raspberry_pi_headless_mode_ubuntu/)
+
+## Starting the Raspberry Pi
+1. Insert he microSD card into the Pi and close its housing if you have one. We are ready to deploy it.
+2. Set the Raspberry Pi close to your router and plug it into an open port using an Ethernet cable.
+3. Connect the power cable to the wall and plug it into the Pi. Now the device will power on. 
+
+### Connecting to the Pi 
+
+Next, you must find the IP address of the Raspberry Pi in order to connect to it. You may log into your router to find it. The instructions to log into your router will be different based on the model. You will need to log into the router to properly set up the Minecraft server.
+
+Once you have the IP Address of your Raspberry Pi, you can connect to it via SSH. 
+
+#### Finding the IP Address of the Pi
+Another way to find the IP address is to do the following.
+
+##### On Linux/Mac:
+```
+arp -na | grep -i "b8:27:eb"
+```
+and if that does not work, do this instead:
+```
+arp -na | grep -i "dc:a6:32"
+```
+
+##### On Windows:
+
+Try 
+```
+arp -a | findstr b8-27-eb
+```
+and if that doesn't work: 
+```
+arp -a | findstr dc-a6-32
+```
+
+#### SSH using Linux/macOS 
+If you are on a Linux machine or a Mac, you can open the terminal and run the conmmand:
+```
+ssh ubuntu@PiIpAddress
+```
+
+#### SSH using Windows 
+If you are on a Windows machine, you may use the Windows Subsystem for Linux (WSL) or use [PuTTY](https://www.putty.org/). If you are using the WSL, it is assumed you know how to launch the Linux terminal and then use the Linux section above. 
+
+If you do not have the WSL, then use PuTTY. Download it from [here](https://www.putty.org/) and install it. 
+
+Run PuTTY and enter the IP address of the Pi into the Host Name box and make sure the port is set to 22.
+
+![PuTTY](./images/putty.png)
+
+Click Open, and when asked for the login name, type Ubuntu. 
+
+### Initial Setup 
+
+When you SSH into the Pi, if you are asked to change the default password, go ahead and change it. Remember this password for when you need to SSH into the Pi later. 
+
+\* Note -- you will not see anything when you type a password into the terminal.
+
+#### Update your Ubuntu Server 
+First, you will update the operating system: 
+```
+sudo apt install update && sudo apt upgrade -y
+```
+
+
