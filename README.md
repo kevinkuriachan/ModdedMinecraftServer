@@ -60,7 +60,7 @@ arp -na | grep -i "dc:a6:32"
 
 ##### On Windows:
 
-Try 
+Try this on Command Prompt
 ```
 arp -a | findstr b8-27-eb
 ```
