@@ -169,6 +169,7 @@ As an example, with forged 1.16.5-36.1.0, this would like as follows.
 ```
 sudo wget https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.16.5-36.1.0/forge-1.16.5-36.1.0-installer.jar
 ```
+## Install Forge 
 
 Type `ls` to make sure the file got downloaded. Now we will install it. Replace the `forge-1.16.5-36.1.0-installer.jar` filename with the name of the you just downloaded.
 
@@ -185,9 +186,70 @@ Now, we will accept the EULA.
 
 ```
 sudo nano eula.txt 
-```
+``` 
 
 Change the `eula=false` line to `eula=true` and save the file by pressing CTRL+X and then y to confirm.
+
+## Starting Forge Server
+
+The server can be started using the following commands. If you would like to install mods, go to the installing mods section and then come back to this.
+
+```
+cd /opt/minecraft/
+screen -S minecraft
+sudo java -Xms1G -Xmx5G -jar /opt/minecraft/forge-1.16.5-36.1.0.jar nogui
+```
+Once again, if the version of forge is different, you will need to replace the file name above with what you have.
+
+Before doing this, install your mods. If you would like to make your server start automatically on boot (should your device lose power), follow the instructions in the next section.
+
+## Making the server start on boot
+In the `opt/` directory, create a folder named scripts.
+```
+cd /opt/
+sudo mkdir scripts
+cd scripts
+```
+We will make a script to start Minecraft. 
+
+```
+sudo nano minecraft.sh
+```
+
+Inside the text editor, type:
+```
+#!/bin/bash
+sudo java -Xms1G -Xmx5G -jar /opt/minecraft/forge-1.16.5-36.1.0.jar nogui
+```
+
+Now save and then make a file named onBootMinecraft.sh
+```
+sudo nano onBootMinecraft
+```
+
+Add the following to the file:
+```
+#!/bin/sh
+screen -dmS "minecraft" /opt/scripts/minecraft.sh
+exit 0
+```
+
+This way, a new screen will be made for Minecraft. 
+
+Now, we will schedule a cron job to run the script on boot. 
+
+```
+crontab -e
+```
+Hit enter. If you are asked which text editor to use, type the number for nano. Now type the following at the end of the file and save.
+```
+@reboot /opt/scripts/onBootMinecraft.sh
+```
+
+This schedules the script to run on boot. 
+
+# Adding Mods 
+To add a mod to the server, copy the mod's .jar file into the `/opt/minecraft/mods/` folder.
 
 [Reference](https://www.linuxnorth.org/minecraft/modded_linux.html)
 
