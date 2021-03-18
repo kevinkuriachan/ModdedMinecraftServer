@@ -90,6 +90,12 @@ Click Open, and when asked for the login name, type Ubuntu.
 
 When you SSH into the Pi for the first time, if you are asked to change the default password, go ahead and change it. Remember this password for when you need to SSH into the Pi later. 
 
+The default login information is:
+```
+username: ubuntu
+password: ubuntu
+```
+
 \* Note -- you will not see anything when you type a password into the terminal.
 
 #### Update your Ubuntu Server 
@@ -99,7 +105,7 @@ sudo apt install update && sudo apt upgrade -y
 ```
 
 
-# Installing The Minecraft Server (Forged)
+# Installing The Minecraft Server (Forge)
 This section covers how to install and run the Forged server. 
 
 ## Environment Setup 
@@ -133,9 +139,58 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install screen
 ```
 
+## Download Forge 
+The forge installers can be found at [this link](https://files.minecraftforge.net/). Right click on the instaler download under the recommended download option. 
+![Copy Link From Forge](./images/forgedLink.JPG)
 
+Paste the copied link into some text editor such as Notepad on windows. 
 
+If the link sends you through an ad service, we will remove that part of the url. The highlighted portion in the image below should be removed. 
+
+![remove from forge](./images/forgedUrlRemove.JPG)
+
+The corrected url is shown below. 
+
+![remove from forge](./images/correctedUrl.JPG)
+
+On the Ubuntu terminal, create a folder for minecrafter in the `/opt/` directory. Then go to the directory.
+```
+cd opt/
+sudo mkdir minecraft 
+cd minecraft
+```
+
+Using the corrected url from the forge website, we will download the installer onto the Pi.
+
+```
+sudo wget <your url>
+```
+As an example, with forged 1.16.5-36.1.0, this would like as follows.
+```
+sudo wget https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.16.5-36.1.0/forge-1.16.5-36.1.0-installer.jar
+```
+
+Type `ls` to make sure the file got downloaded. Now we will install it. Replace the `forge-1.16.5-36.1.0-installer.jar` filename with the name of the you just downloaded.
+
+```
+sudo java -jar forge-1.16.5-36.1.0-installer.jar --installServer
+```
+
+The next step depends on the amount of memory on your Pi. The `-Xms1G` tells forge to start the server with 1GB of RAM. The 5G tells forge to allow the server to use up to 5GB of RAM. Note -- leave 2GB for the operating system when selecting this number. 
+
+```
+sudo java -Xms1G -Xmx5G -jar /opt/minecraft/forge-1.16.5-36.1.0.jar nogui
+```
+Now, we will accept the EULA. 
+
+```
+sudo nano eula.txt 
+```
+
+Change the `eula=false` line to `eula=true` and save the file by pressing CTRL+X and then y to confirm.
 
 [Reference](https://www.linuxnorth.org/minecraft/modded_linux.html)
 
 [Reference 2](https://www.arubacloud.com/tutorial/how-to-install-mods-on-a-minecraft-server-with-ubuntu-20-04.aspx)
+
+[Reference 3](https://minecraft.gamepedia.com/Tutorials/Setting_up_a_Minecraft_Forge_server)
